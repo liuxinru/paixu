@@ -1,0 +1,461 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>数组排序</title>
+  <script src="function.js"></script>
+  <style>
+      div{
+        height:60px;
+         background: red;
+         margin:10px 0;
+      }
+      div:nth-child(1){
+         width: 200px;
+         
+      }
+        div:nth-child(2){
+         width: 50px;
+      }
+        div:nth-child(3){
+         width: 100px;
+      }
+        div:nth-child(4){
+         width: 300px;
+      }
+  </style>
+</head>
+<script>
+  window.onload=function(){
+
+    //排红块从短到长排列
+    var div=document.querySelectorAll("div");                  //es6  获取所有div
+    var newarr=[];
+    function makeall(list){
+        for(var i=0;i<list.length;i++){
+             newarr[i]=list[i];
+        }
+        return newarr;
+    }
+ makeall(div);
+   console.dir(newarr)
+// console.log(newarr)
+    newarr.sort(function(a,b){
+         return a.clientWidth>b.clientWidth;
+    })
+     newarr.forEach(function(obj,index){
+            var width=obj.clientWidth;
+            var clone=obj.cloneNode(true); 
+            clone.style.width=width+"px";
+           document.body.appendChild(clone);
+          // console.log(clone);
+       })
+        newarr.forEach(function(obj,index){
+         document.body.removeChild(obj);
+        })
+  }
+</script>
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    </body>
+</html>
+<script>
+  //排红快    （dom  数据类型的操作）
+  //dom变化问题
+ //  var div=document.getElementsByTagName("div"); 
+ //  var newarr=[];
+ // for(var i=0;i<div.length;i++){
+ //      var obj={width:div[i].offsetWidth,a:div[i].innerText}      //以对象的形式把每个盒子的内容和宽都取出来
+ //      newarr.push(obj);
+ //  }  
+ //  // console.log(newarr)
+ //     function sort(newarr,callback){
+ //       for(var i=0;i<newarr.length;i++){
+ //             for(var j=i+1;j<newarr.length;j++){
+ //                if(callback(newarr[i],newarr[j])){
+ //                   var temp=newarr[i];
+ //                   newarr[i]=newarr[j];
+ //                   newarr[j]=temp;
+ //                }
+ //             }
+ //          }
+ //          return newarr;
+ //       }
+ //       var sty=sort(newarr,function(a,b){
+ //          return a.width>b.width;
+ //       })
+ //      for(var i=0;i<newarr.length;i++){
+ //          div[i].style.width=sty[i].width+"px";
+ //          div[i].innerText=sty[i].a;
+ //      }
+       
+  
+  
+   
+
+
+      
+      
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//数组的排序
+   
+   //不影响原来的数组
+   //复制一个同样的数组
+   // var arr=[123,8,1,10];
+     // function copy(arr){
+     //  var newarr=[];
+     //  for(var i in arr){
+   	 //    newarr[i]=arr[i];
+     //  }
+     //   return newarr;
+     // }
+
+     //冒泡排序
+	  // var newarr=copy(arr);
+   //  	 function sheng(newarr,type){
+   //  	 	  var type=type||"sheng";
+   //        for(var i=0;i<newarr.length;i++){
+   //        	for(var j=i+1;j<newarr.length;j++){
+   //        		if(type=="sheng"){
+   //        			if(newarr[i]>newarr[j]){
+   //        			var temp=newarr[j];
+   //        			newarr[j]=newarr[i];
+   //        			newarr[i]=temp;
+   //        		  }
+   //        		}else if(type=="jiang"){
+   //        			if(newarr[i]<newarr[j]){
+   //        			var temp=newarr[j];
+   //        			newarr[j]=newarr[i];
+   //        			newarr[i]=temp;
+   //        		  }
+   //        		}
+          		
+   //        	}
+   //        }
+   //        return newarr;
+   // 	 }
+   //   console.log(sheng(newarr,"jiang"));
+   
+  
+    
+
+   
+
+
+    //插入排序
+     // var arr=[4,7,1,3,5,9,8];                        
+     // var newarr=copy(arr);
+     // function charu(arr){
+     // 	var length=newarr.length;
+     //      for(var i=1;i<length;i++){
+     //           var pre=i-1;                         //将上一个的下标存到变量pre中，
+     //           var now=newarr[i];                   //将当前的值存到变量now中，
+     //           while(pre>=0&&now<newarr[pre]){      //当满足条件的时候走循环体
+     //                 newarr[pre+1]=newarr[pre];       
+     //                 pre--;
+     //           }
+     //           newarr[pre+1]=now;
+     //      }
+     //      return newarr;
+     // }
+     // console.log(charu(arr));
+   
+
+
+
+    
+
+    //选择排序
+  //    var arr=[2,7,5,3,4,9,8];
+  //   var newarr=copy(arr);
+  //       function select(arr){
+		// 	for (var i = 0; i < newarr.length; i++) {
+		// 		var min=newarr[i];                              //将数组里的值存入到min变量中
+		// 		var index=i;
+		// 		for (var j = i+1; j < newarr.length; j++) {
+		// 			if(min>newarr[j]){
+		// 				min=newarr[j]
+		// 				index=j;
+		// 			}
+		// 		}		
+		// 		var temp;
+		// 		temp=newarr[i];
+		// 		newarr[i]=newarr[index];
+		// 		newarr[index]=temp;
+		// 		// console.log(newarr,index,min)
+		// 	}
+		// 	return newarr;
+		// }
+		// console.log(select(arr));
+
+
+
+   
+    
+    //第二遍
+//插入排序
+   //  var arr1=[1,5,4,8];
+   //  var newarr=copy(arr1);
+   // function inset(arr){
+   // 	    for(var i=1;i<newarr.length;i++){
+   //      	  var pre=i-1;
+   //      	  var now=newarr[i];                     //now=5;   //now=4;
+   //      	while(pre>=0&&now<newarr[pre]){
+   //                 newarr[pre+1]=newarr[pre];     
+   //      	       pre--;
+   //      	}
+   //      	newarr[pre+1]=now;
+   //      } 
+   //      return newarr;
+   // }
+   //  console.log(inset(arr1));
+
+
+
+    // 选择排序
+    // var arr2=[2,6,1];
+    // var newarr=copy(arr2);
+    // function select(arr){
+    // 	for(var i=0;i<newarr.length;i++){
+    // 		var min=newarr[i];
+    // 		var index=i;
+    // 		for(var j=i+1;j<newarr.length;j++){
+    // 			if(min>newarr[j]){
+    // 				min=newarr[j];
+    // 				index=j;
+    // 			}
+    // 		}
+    // 		var temp=newarr[i];
+    // 		newarr[i]=newarr[index];
+    // 		newarr[index]=temp;
+    // 	}
+    // 	return newarr;
+    // }
+    // console.log(select(arr2));
+
+
+
+
+
+  //第三遍
+  //选择排序
+  // var arr=[123,8,4,1,10];
+  // var newarr=copy(arr);
+  // function select(arr){
+  //     for(var i=0;i<newarr.length;i++){
+  //        var min=newarr[i];
+  //        var index=i;
+  //        for(var j=i+1;j<newarr.length;j++){
+  //           if(min>newarr[j]){
+  //               min=newarr[j];
+  //               index=j;
+  //           }
+  //        }
+  //        var temp=newarr[i];
+  //        newarr[i]=newarr[index];
+  //        newarr[index]=temp;
+  //     }
+  //     return newarr;
+  // }
+  // console.log(select(arr));
+
+
+
+
+  //插入排序
+  // var arr=[8,10,6,3];
+  // var newarr=copy(arr);
+  // function charu(arr){
+  //    for(var i=1;i<newarr.length;i++){
+  //        var pre=i-1;
+  //        var now=newarr[i];
+  //        while(pre>=0&&now<newarr[pre]){
+  //             newarr[pre+1]=newarr[pre];
+  //             pre--;
+  //        }
+  //        newarr[pre+1]=now;
+  //    }
+  //    return newarr;
+  // }
+  // console.log(charu(arr));
+
+
+
+  //第四遍
+      //复制同样的一个数组
+  //  var brr=[1,5,0,6,10,2,13];
+  // function copy(arr){
+  //     var newarr=[];
+  //      for(var i in brr){
+  //         newarr[i]=brr[i];
+  //      }
+  //      return newarr;
+  //  }
+  
+
+
+  //冒泡排序
+   // function maopao(arr){
+   //  var newarr=copy(brr);
+   //    for(var i=0;i<newarr.length;i++){
+   //        for(var j=i+1;j<newarr.length;j++){
+   //           if(newarr[i]>newarr[j]){
+   //               var temp=newarr[i];
+   //               newarr[i]=newarr[j];
+   //               newarr[j]=temp;
+   //           }
+   //        }
+         
+   //    }
+   //    return newarr;
+   // }
+   //   console.log(maopao(brr));
+
+
+
+     //插入排序
+     // function charu(arr){
+     //   var newarr=copy(brr);
+     //      for(var i=1;i<newarr.length;i++){
+     //         var pre=i-1;
+     //         var curr=newarr[i];
+     //         while(pre>=0&&curr>newarr[pre]){
+     //             newarr[pre+1]=newarr[pre];
+     //             pre--;
+     //         }
+     //         newarr[pre+1]=curr;
+     //      }
+     //      return newarr;
+     // }
+     // console.log(charu(brr));
+
+
+     //选择排序
+       // function select(arr){
+       //    var newarr=copy(brr);
+       //    for(var i=0;i<newarr.length;i++){
+       //        var min=newarr[i];
+       //        var index=i;
+       //        for(var j=i+1;j<newarr.length;j++){
+       //          if(min>newarr[j]){
+       //               min=newarr[j];
+       //               index=j;
+       //          }
+       //        }
+       //        var temp=newarr[i];
+       //        newarr[i]=newarr[index];
+       //        newarr[index]=temp;
+       //    }
+       //    return newarr;
+       // }
+       // console.log(select(brr));
+
+
+      
+
+
+
+      //5
+      // var arr=[5,8,3,4];
+      // function copy(arr){
+      //      var newarr=[];
+      //     for(var i in arr){
+      //         newarr[i]=arr[i];
+      //      }
+      //      return newarr;
+      // }
+      // //插入排序从小到大
+      //    function charu(arr){
+      //       var newarr=copy(arr);
+      //       for(var i=1;i<newarr.length;i++){
+      //           var pre=i-i;
+      //           var now=newarr[i];
+      //           while(pre>=0&&now<newarr[pre]){
+      //                newarr[pre+1]=newarr[pre];
+      //                pre--;
+      //           }
+      //           newarr[pre+1]=now;
+      //       }
+      //       return newarr;
+      //    }
+      //    console.log(charu(arr));
+ 
+       
+         
+
+        //js中sort函数快速排序法
+        // var arr=[1,8,10,2];
+        //  function sort(arr,callback){
+        //       for(var i=0;i<arr.length;i++){
+        //          for(var j=i+1;j<arr.length;j++){
+        //              if(callback(arr[i],arr[j])){
+        //               var temp=arr[i];
+        //               arr[i]=arr[j];
+        //               arr[j]=temp;
+        //              }
+        //          }
+        //       }
+        //       return arr;
+        // }
+        // console.log(sort(arr,function(a,b){
+        //      return a>b;
+        // }))
+       
+
+       
+
+
+      //sort函数
+       // var arr=[1,5,10,3,4];
+       // function copy(arr){
+       //    var newarr=[];
+       //    for(var i in arr){
+       //      newarr[i]=arr[i];
+       //    }
+       //    return newarr;
+       // }
+       // function sort(arr,callback){
+       //  var newarr=copy(arr);
+       //    for(var i=0;i<newarr.length;i++){
+       //       for(var j=i+1;j<newarr.length;j++){
+       //          if(callback(newarr[i],newarr[j])){
+       //             var temp=newarr[i];
+       //             newarr[i]=newarr[j];
+       //             newarr[j]=temp;
+       //          }
+       //       }
+       //    }
+       //    return newarr;
+       // }
+       // console.log(sort(arr,function(a,b){
+       //    return a>b;
+       // }))
+
+
+        
+       
+</script>
